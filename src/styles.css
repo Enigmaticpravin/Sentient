@@ -1,0 +1,265 @@
+body {
+    background-color: #333333;
+    background-size: cover;
+    align-items: center;
+    text-align: center;
+    background: url('images/bg.png');
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}w
+  
+  h1 {
+    color: #61dafb;
+  }
+  .subtitle {
+    display: inline-block;
+    size: 12px;
+    color: white;
+    font-family: poppinsReg;
+  }
+  .chat-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    overflow: hidden;
+    width: 300px;
+    margin-bottom: 20px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .chat-header {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .chat-body {
+    padding: 10px;
+    max-height: 300px;
+    overflow-y: auto;
+  }
+  
+.logo {
+    width: 120px;
+    height: auto;
+}
+
+.inputContainer {
+    width: calc(100% - 40px);
+        height: 600px;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 20px;
+        margin-top: 10px;
+        border-bottom-right-radius: 20px;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
+        position: relative;
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+}
+  .glassmorphism {
+    background: #222222;
+    backdrop-filter: blur(30px);
+    margin-top: 20px;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 255, 0.5);
+  }
+
+  .separator {
+    display: inline-block;
+    width: 1px;
+    border-radius: 20px;
+    height: 20px;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    background-color: white;
+    margin: 0 20px;
+  }
+  
+  .user-input {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    margin-right: 10px;
+    right: 20px;
+    width: calc(100% - 55px);
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+#promptInput {
+    flex: 1;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-right: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    border: none;
+    margin-left: 10px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    color: #fff;
+}
+
+#sendButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(87, 255, 255, 0.34);
+    background: linear-gradient(90deg, #299BFF, #2c67f2);
+}
+
+.sendButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    border: 1px solid rgba(87, 255, 255, 0.34);
+    background: linear-gradient(90deg, #299BFF, #2c67f2);
+} 
+#sendButton img {
+    width: 24px; /* Set your desired width */
+    height: 24px; /* Set your desired height */
+    cursor: pointer;
+}
+
+#galleryButton {
+    display: flex;
+    align-items: center;
+    width: 45px;
+    justify-content: center;
+    height: 45px;
+    border: 1px solid #ffffff;
+    border-radius: 10px;
+    margin-left: 5px;
+    cursor: pointer;
+    background: #00000000;
+}
+  
+
+.relative-container {
+    position: relative;
+    text-align: center;
+    align-items: center;
+    margin-top: 150px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+}
+
+h3 {
+    font-family: 'Poppins', sans-serif;
+    margin-bottom: 10px;
+    color: #fff;
+    font-size: 15px;
+}
+
+.rounded-image {
+    width: 130px;
+    height: 130px;
+    background-image: url('images/bg.png');
+    background-size: cover;
+    background-position: center;
+    border-radius: 40px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.dismiss-button {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    background: linear-gradient(90deg, #F44336, #FD5555);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    margin-top: 10px;
+}
+
+.progress-container {
+    background: #fff;
+    display: flex;
+    width: fit-content;
+    border-radius: 10px;
+    align-items: center;
+    padding: 5px 20px 5px 20px;
+    margin-top: 10px;
+
+}
+
+#progress_circular {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+}
+
+.progress-container p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+
+  #output,
+  #outputImage {
+    margin-top: 10px;
+  }
+
+  .progress-container2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: fit-content;
+    margin: 0 auto;
+    margin-top: 150px;
+    border-radius: 10px;
+    padding: 20px;
+    position: relative;
+    background: #ffffff;
+    text-align: center;
+}
+.progress-container2 p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+#progressBar {
+    width: 60px; /* Set your desired width */
+    height: 60px; /* Set your desired height */
+    margin-top: 20px;
+}
+
+p {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.outputTxt{
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    text-align: left;
+    color: #fff;
+    margin: 20px 20px 20px 20px;
+}
+
+  

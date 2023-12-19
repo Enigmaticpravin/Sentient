@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sentient</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
+    <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+    <img src="images/geminilogo.png" class="logo">
+
+    <div class="inputContainer">
+      <p id="output" class="outputTxt"></p>
+      <div id="progressRay" class="progress-container2" style="display: none;">
+        <img id="progressBar" src="images/progress.gif" alt="Progress Indicator">
+        <p>Please wait...</p>
+    </div>    
+      <div id="selectedImageLay" class="relative-container">
+        <h3 id="moon">selected image</h3>
+    
+        <div id="selected" class="rounded-image">
+            <!-- Your image source here -->
+        </div>
+    
+        <button id="dismissBtn" class="dismiss-button">dismiss</button>
+    
+        <div id="progressImage" class="progress-container">
+            <img id="progress_circular" src="images/progress.gif" alt="Processing Indicator">
+            <p>processing your image...</p>
+        </div>
+    </div>
+    
+    </div>
+  <div class="user-input">
+  <button id="galleryButton" for="fileInput">
+    <img class="imageicon" src="images/gallery.svg" alt="Gallery Image" style="cursor: pointer;" onclick="document.getElementById('fileInput').click()">
+    <input type="file" id="fileInput" accept="image/*" onchange="handleImageSelection()" style="display: none;">
+  </button>
+    <input type="text" id="promptInput" placeholder="Write a prompt...">
+    <button id="sendButton">
+      <img onclick="handleSendButton()" src="images/send-2.svg" alt="Send Button">
+  </button>
+  </div>
+
+  <script type="importmap">
+    {
+      "imports": {
+        "@google/generative-ai": "https://esm.run/@google/generative-ai"
+      }
+    }
+  </script>
+
+  <script type="module">
+   import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
+
+    const API_KEY = "AIzaSyAXE8ZkUvf7jCYos4uygfjd26W6hRiU2qQ";
+    const genAI = new GoogleGenerativeAI(API_KEY);
+
+    window.handleImageSelection = function() {
+    // Hide the progressImage div and show the selectedImageLay div
+    document.getElementById('progressImage').style.display = 'none';
+    document.getElementById('selectedImageLay').style.display = 'flex';
+
+    document.getElementById('output').textContent = "";
+
+    // Display the selected image
+    const fileInputEl = document.getElementById('fileInput');
+    const selectedImageDiv = document.getElementById('selected');
+    
+    if (fileInputEl.files.length > 0) {
+      const selectedImage = fileInputEl.files[0];
+      const imageUrl = URL.createObjectURL(selectedImage);
+      selectedImageDiv.style.backgroundImage = `url('${imageUrl}')`;
+    } else {
+      // Handle the case when no image is selected
+      selectedImageDiv.style.backgroundImage = 'none';
+    }
+  }
+
+    window.handleSendButton = function() {
+      const fileInputEl = document.getElementById('fileInput');
+      if (fileInputEl.files.length > 0) {
+        const dismissBtn = document.getElementById('dismissBtn');
+        dismissBtn.style.display = "none";
+        const progress = document.getElementById('progressImage');
+        progress.style.display = "flex";
+        run()
+
+        fileInputEl.value = null;
+
+        document.getElementById('promptInput').value = "";
+        document.getElementById('output').textContent = "";
+
+    } else {
+      const progressRay = document.getElementById('progressRay');
+      progressRay.style.display = progressRay.style.display === 'none' ? 'flex' : 'none';
+      play();
+      document.getElementById('promptInput').value = "";
+      document.getElementById('output').textContent = "";
+    }
+  }
+
+  window.play = async function () {
+    const promptInput = document.getElementById('promptInput');
+
+    const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+];
+
+    const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
+
+    const prompt = promptInput.value;
+
+    const result = await model.generateContentStream(prompt);
+
+    let text = '';
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      console.log(chunkText);
+      text += chunkText;
+      document.getElementById('output').textContent = text;
+    }
+
+    const progressRay = document.getElementById('progressRay');
+    progressRay.style.display = 'none';
+  };
+
+    window.run = async function () {
+
+      const safetySettings = [
+  {
+    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+  {
+    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+    threshold: HarmBlockThreshold.BLOCK_NONE,
+  },
+];
+
+    const model = genAI.getGenerativeModel({ model: "gemini-pro-vision", safetySettings });
+
+    const promptInput = document.getElementById('promptInput');
+    const prompt = promptInput.value;
+
+    const fileInputEl = document.getElementById('fileInput');
+    const imageParts = await Promise.all(
+      [...fileInputEl.files].map(fileToGenerativePart)
+    );
+
+    const result = await model.generateContentStream([prompt, ...imageParts]);
+
+    let text = '';
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      console.log(chunkText);
+      text += chunkText;
+    }
+
+    document.getElementById('output').textContent = text;
+
+    const progressLay = document.getElementById('selectedImageLay');
+    progressLay.style.display = 'none';
+  };
+
+    async function fileToGenerativePart(file) {
+      const base64EncodedDataPromise = new Promise((resolve) => {
+        const reader = new FileReader();
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.readAsDataURL(file);
+      });
+      return {
+        inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
+      };
+    }
+  </script>
+  <footer class="bg-gray-800 text-white py-8" style="display: none;">
+    <div class="container mx-auto text-center">
+        <p class="copyright">&copy; Copyright, 2023 Opion Pvt. Ltd. All rights reserved.</p>
+    </div>
+</footer>
+</body>
+</html>
