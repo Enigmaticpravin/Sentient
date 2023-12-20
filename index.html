@@ -8,8 +8,16 @@
     <link rel="stylesheet" href="src/styles.css">
 </head>
 <body>
-    <img src="images/geminilogo.png" class="logo">
-
+  <div class="toolbar">
+    <div class="logodiv">
+      <img src="images/sentient logo.png" class="logo">
+      <div class="separator"></div>
+      <div class="gemini">
+        <p class="power">powered by</p>
+        <img src="images/geminilogo.png" class="geminilogo">
+      </div>
+    </div>
+  </div>
     <div class="inputContainer">
       <p id="output" class="outputTxt"></p>
       <div id="progressRay" class="progress-container2" style="display: none;">
@@ -23,7 +31,7 @@
             <!-- Your image source here -->
         </div>
     
-        <button id="dismissBtn" class="dismiss-button">dismiss</button>
+        <button id="dismissBtn" class="dismiss-button" onclick="dismiss()">dismiss</button>
     
         <div id="progressImage" class="progress-container">
             <img id="progress_circular" src="images/progress.gif" alt="Processing Indicator">
@@ -37,7 +45,7 @@
     <img class="imageicon" src="images/gallery.svg" alt="Gallery Image" style="cursor: pointer;" onclick="document.getElementById('fileInput').click()">
     <input type="file" id="fileInput" accept="image/*" onchange="handleImageSelection()" style="display: none;">
   </button>
-    <input type="text" id="promptInput" placeholder="Write a prompt...">
+    <input type="text" id="promptInput" placeholder="What do you want me to do?">
     <button id="sendButton">
       <img onclick="handleSendButton()" src="images/send-2.svg" alt="Send Button">
   </button>
@@ -78,9 +86,18 @@
     }
   }
 
+  window.dismiss = function(){
+    const fileInputEl = document.getElementById('fileInput');
+    fileInputEl.value = null;
+    document.getElementById('selectedImageLay').style.display = 'none';
+
+  }
+
     window.handleSendButton = function() {
       const fileInputEl = document.getElementById('fileInput');
-      if (fileInputEl.files.length > 0) {
+      const promptText = document.getElementById('promptInput').value.trim();
+      if (promptText !== ""){
+        if (fileInputEl.files.length > 0) {
         const dismissBtn = document.getElementById('dismissBtn');
         dismissBtn.style.display = "none";
         const progress = document.getElementById('progressImage');
@@ -99,6 +116,9 @@
       document.getElementById('promptInput').value = "";
       document.getElementById('output').textContent = "";
     }
+      } else {
+        alert("Please enter a prompt to proceed!")
+      }
   }
 
   window.play = async function () {

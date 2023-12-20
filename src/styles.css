@@ -41,25 +41,89 @@ body {
   }
   
 .logo {
-    width: 120px;
+    width: 250px;
     height: auto;
+    margin-left: 27px;
 }
 
-.inputContainer {
-    width: calc(100% - 40px);
-        height: 600px;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        border-bottom-left-radius: 20px;
-        margin-top: 10px;
-        border-bottom-right-radius: 20px;
-        justify-content: center;
-        align-items: center;
-        background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
-        position: relative;
-        overflow: hidden;
-        backdrop-filter: blur(10px);
+.logodiv {
+  display: flex;
+  flex-direction: row; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center; /* Center items vertically */
+  height: auto;
 }
+
+.toolbar {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  margin-right: 10px;
+  width: calc(100% - 55px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-left: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.toolbar > * {
+  display: inline-flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.gemini{
+  padding: 10px;
+  text-align: center;
+  margin-top: 5px;
+  margin-bottom: -2px;
+  justify-content: center;
+  align-items: center;
+}
+
+.geminilogo {
+  width: 70px;
+  height: auto;
+  margin: 0; /* Remove margin */
+}
+
+.power {
+  font-size: 7px;
+  color: #fff;
+  font-family: 'Poppins', sans-serif;
+  margin: 0; /* Remove margin */
+}
+
+
+.inputContainer {
+  width: calc(100% - 40px);
+  height: 565px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  top: 107px; /* Set to the height of the toolbar */
+  border-bottom-right-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+#promptInput::placeholder {
+  color: #cbcbcbdf;
+  font-family: 'Poppins';
+  font-size: 15px;
+}
+
   .glassmorphism {
     background: #222222;
     backdrop-filter: blur(30px);
@@ -72,15 +136,10 @@ body {
   }
 
   .separator {
-    display: inline-block;
-    width: 1px;
-    border-radius: 20px;
     height: 20px;
-    align-items: center;
-    align-content: center;
-    align-self: center;
-    background-color: white;
-    margin: 0 20px;
+    border-left: 2px solid #fff; /* Adjust the color as needed */
+    margin-left: 30px;
+    margin-right: 20px;
   }
   
   .user-input {
@@ -109,6 +168,8 @@ body {
     padding-left: 20px;
     border: none;
     margin-left: 10px;
+    font-size: 15px;
+    font-family: 'Poppins';
     border-radius: 10px;
     background: rgba(255, 255, 255, 0.2);
     color: #fff;
@@ -159,7 +220,7 @@ body {
     position: relative;
     text-align: center;
     align-items: center;
-    margin-top: 150px;
+    margin-top: 100px;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -189,6 +250,7 @@ h3 {
     background: linear-gradient(90deg, #F44336, #FD5555);
     color: #fff;
     border: none;
+    cursor: pointer;
     border-radius: 10px;
     padding: 5px 10px;
     margin-top: 10px;
@@ -259,7 +321,154 @@ p {
     font-size: 17px;
     text-align: left;
     color: #fff;
-    margin: 20px 20px 20px 20px;
+    padding: 20px 40px 40px 40px;
+}
+@media screen and (max-width: 768px) {
+  /* Adjust styles for smaller screens */
+  .toolbar {
+    padding-left: 10px;
+    padding-right: 10px;
+    border-radius: 10px;
+  }
+
+  .separator {
+    margin-left: 20px;
+    margin-right: 10px;
+    height: 15px;
+    border-left: 1px solid #fff; /* Adjust the color as needed */
+  }
+
+  .user-input {
+    padding: 5px;
+    bottom: 10px;
+  }
+
+  #promptInput {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+
+  .gemini{
+    padding: 10px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -2px;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .geminilogo {
+    width: 40px;
+    height: auto;
+    margin: 0; /* Remove margin */
+  }
+  
+  #promptInput::placeholder {
+    color: #cbcbcbdf;
+    font-family: 'Poppins';
+    font-size: 10px;
+  }
+
+  .power {
+    font-size: 4px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0; /* Remove margin */
+  }
+
+  .logo {
+    width: 180px;
+    height: auto;
+    margin-left: 27px;
 }
 
+.inputContainer {
+  width: calc(100% - 40px);
+  height: 515px;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+  top: 86px; /* Set to the height of the toolbar */
+  border-bottom-right-radius: 10px;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+} 
+
+.outputTxt{
+  font-family: 'Poppins', sans-serif;
+  font-size: 12px;
+  text-align: left;
+  color: #fff;
+  padding: 10px 20px 20px 20px;
+}
+
+.user-input {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  margin-right: 10px;
+  right: 20px;
+  width: calc(100% - 55px);
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
+
+#promptInput {
+  flex: 1;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  margin-right: 5px;
+  padding-right: 10px;
+  padding-left: 10px;
+  border: none;
+  margin-left: 5px;
+  font-size: 10px;
+  font-family: 'Poppins';
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+#sendButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  margin-right: 5px;
+  border-radius: 50%;
+  border: 1px solid rgba(87, 255, 255, 0.34);
+  background: linear-gradient(90deg, #299BFF, #2c67f2);
+}
+
+#sendButton img {
+  width: 24px; /* Set your desired width */
+  height: 24px; /* Set your desired height */
+  cursor: pointer;
+}
+
+#galleryButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid rgba(87, 255, 255, 0.34);
+  background: linear-gradient(90deg, #cecece41, #d9d9d920);
+}
+
+}
   
