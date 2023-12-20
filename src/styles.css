@@ -324,7 +324,6 @@ p {
     padding: 20px 40px 40px 40px;
 }
 @media screen and (max-width: 768px) {
-  /* Adjust styles for smaller screens */
   .toolbar {
     padding-left: 10px;
     padding-right: 10px;
@@ -446,8 +445,9 @@ p {
   justify-content: center;
   align-items: center;
   width: 35px;
+  margin-left: 3px;
   height: 35px;
-  margin-right: 5px;
+  margin-right: 3px;
   border-radius: 50%;
   border: 1px solid rgba(87, 255, 255, 0.34);
   background: linear-gradient(90deg, #299BFF, #2c67f2);
@@ -466,8 +466,98 @@ p {
   width: 35px;
   height: 35px;
   border-radius: 10px;
+  margin-right: 3px;
   border: 1px solid rgba(87, 255, 255, 0.34);
   background: linear-gradient(90deg, #cecece41, #d9d9d920);
+}
+
+h3 {
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 10px;
+  color: #fff;
+  font-size: 10px;
+}
+
+.rounded-image {
+  width: 100px;
+  height: 100px;
+  background-image: url('images/bg.png');
+  background-size: cover;
+  background-position: center;
+  border-radius: 30px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.dismiss-button {
+  font-family: 'Poppins', sans-serif;
+  font-weight: bold;
+  background: linear-gradient(90deg, #F44336, #FD5555);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  font-size: 12px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
+.progress-container {
+  background: #fff;
+  display: flex;
+  width: fit-content;
+  border-radius: 10px;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+  margin-top: 10px;
+
+}
+
+#progress_circular {
+  width: 20px;
+  height: 20px;
+  margin-right: 5px;
+}
+
+.progress-container p {
+  font-family: 'Poppins';
+  text-align: center;
+  font-size: 10px;
+  margin: 0;
+}
+
+#output,
+#outputImage {
+  margin-top: 10px;
+}
+
+.progress-container2 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin: 0 auto;
+  margin-top: 150px;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
+  padding-right: 10px;
+  position: relative;
+  background: #ffffff;
+  text-align: center;
+}
+.progress-container2 p {
+  font-family: 'Poppins';
+  font-size: 8px;
+  text-align: center;
+  margin: 0;
+}
+#progressBar {
+  width: 40px; /* Set your desired width */
+  height: 40px; /* Set your desired height */
+  margin-top: 20px;
 }
 
 }
