@@ -44,9 +44,10 @@
     <link rel="manifest" href="images/site.webmanifest">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
     <link rel="stylesheet" href="src/styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-  <div class="toolbar">
+  <section>
     <div class="logodiv">
       <img src="images/sentient logo.png" class="logo">
       <div class="separator"></div>
@@ -54,10 +55,22 @@
         <p class="power">powered by</p>
         <img src="images/geminilogo.png" class="geminilogo">
       </div>
+    </div>   
+    <div class="logodiv2">
+      <button type="submit" class="navBtn">Home</button>
+      <button type="submit" class="navBtn2">About</button>
+      <button class="custom-button" onclick="next()">
+        <img src="images/imagegenpng.png" alt="Image">
+        Generate Image
+      </button>     
     </div>
-  </div>
+  </section>
     <div class="inputContainer">
       <p id="output" class="outputTxt"></p>
+      <div class="container" style="display: none;">
+        <span class="text first-text">I'm a</span>
+        <span class="text sec-text">Freelancer</span>
+    </div>
       <div id="progressRay" class="progress-container2" style="display: none;">
         <img id="progressBar" src="images/progress.gif" alt="Progress Indicator">
         <p>Please wait...</p>
@@ -83,7 +96,7 @@
     <img class="imageicon" src="images/gallery.svg" alt="Gallery Image" style="cursor: pointer;" onclick="document.getElementById('fileInput').click()">
     <input type="file" id="fileInput" accept="image/*" onchange="handleImageSelection()" style="display: none;">
   </button>
-    <input type="text" id="promptInput" placeholder="What do you want me to do?">
+    <input type="text" id="promptInput" placeholder="What do you want me to do?" required>
     <button id="sendButton">
       <img onclick="handleSendButton()" src="images/send-2.svg" alt="Send Button">
   </button>
@@ -247,6 +260,24 @@
         inlineData: { data: await base64EncodedDataPromise, mimeType: file.type },
       };
     }
+    const text = document.querySelector(".sec-text");
+        const textLoad = () => {
+            setTimeout(() => {
+                text.textContent = "Freelancer";
+            }, 0);
+            setTimeout(() => {
+                text.textContent = "Blogger";
+            }, 4000);
+            setTimeout(() => {
+                text.textContent = "YouTuber";
+            }, 8000); //1s = 1000 milliseconds
+        }
+        textLoad();
+        setInterval(textLoad, 12000);
+
+        window.next = function () {
+  window.location.href = 'image_generate.html';
+}
   </script>
   <footer class="bg-gray-800 text-white py-8" style="display: none;">
     <div class="container mx-auto text-center">
