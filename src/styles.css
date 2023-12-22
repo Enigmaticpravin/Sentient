@@ -95,6 +95,30 @@ body {
   backdrop-filter: blur(10px);
 }
 
+.logodiv3 {
+  display: none;
+  flex-direction: row; /* Stack items vertically */
+  align-items: center; /* Center items horizontally */
+  justify-content: center;
+  height: auto;
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  margin-right: 5px;
+  width: fit-content;
+  padding-left: 20px;
+  padding-right: 10px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
 .generate-btn2 {
   position: relative;
   display: inline-block;
@@ -323,9 +347,21 @@ main {
 
 @media screen and (max-width: 760px) {
   .image-generator {
-    height: 45vh;
-    padding-top: 30px;
+    height: 80px;
     align-items: flex-start;
+    z-index: 1;
+    top: 150px;
+    left: 0;
+  }
+
+  .image-generator .content {
+    position: relative;
+    color: #fff;
+    padding: 0 15px;
+    max-width: 760px;
+    width: 100%;
+    margin-bottom: 50px;
+    text-align: center;
   }
 
   .image-generator h1 {
@@ -334,6 +370,32 @@ main {
 
   .image-generator p {
     font-size: 1rem;
+  }
+
+  .image-gallery .img-card {
+    width: 50%; /* Display cards in a single column */
+    aspect-ratio: unset; /* Remove aspect-ratio for smaller screens */
+    margin-bottom: 10px; /* Add spacing between cards */
+    flex-direction: column;
+    flex: 0 0 40%;
+    justify-content: center;
+  }
+
+  .image-gallery .img-card.loading img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .image-gallery .img-card .download-btn {
+    bottom: 10px;
+    right: 10px;
+    height: 30px;
+    width: 30px;
+  }
+
+  .image-gallery .img-card .download-btn img {
+    width: 12px;
+    height: 12px;
   }
 
   .image-generator .generate-form {
@@ -357,23 +419,26 @@ main {
     color: #fff;
   }
 
+  .generate-form {
+
+    margin-bottom: 30px;
+  }
+
   .generate-form .img-quantity option {
     color: #000;
   }
 
   .image-gallery {
-    margin-top: 20px;
+    .image-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px; /* Adjust the gap between items based on your design */
+    }
   }
 
   .image-gallery .img-card:not(.loading) .download-btn {
     opacity: 1;
     pointer-events: auto;
-  }
-}
-
-@media screen and (max-width: 500px) {
-  .image-gallery .img-card {
-    width: 100%;
   }
 }
 
@@ -432,6 +497,48 @@ main {
   margin-right: 10px;
 }
 
+.dropdown_menu
+{
+  position: absolute;
+  display: none;
+  flex-direction: column;
+  right: 1.5rem;
+  padding: 20px 20px 20px 20px;
+  top: 100px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  backdrop-filter: blur(10px);
+  z-index: 1000;
+}
+
+.dropdown_menu .navBtn2{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+}
+
+.dropdown_menu .custom-button{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+}
+.dropdown_menu .navBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+}
 .container2 {
   display: flex;
   align-items: center;
@@ -515,18 +622,20 @@ main {
 
 .inputContainer {
   width: calc(100% - 40px);
-  height: 565px;
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  border-bottom-left-radius: 20px;
-  top: 107px; /* Set to the height of the toolbar */
-  border-bottom-right-radius: 20px;
-  justify-content: center;
+  height: 100%; /* Change max-content to 100% */
+  border-radius: 10px;
+  top: 117px;
+  bottom: 50px; /* Adjust bottom value as needed */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
   align-items: center;
   background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
   position: relative;
+  flex-grow: 1;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  z-index: 1;
 }
 
 #promptInput::placeholder {
@@ -556,13 +665,11 @@ main {
   .user-input {
     position: fixed;
     bottom: 20px;
-    left: 20px;
-    margin-right: 10px;
-    right: 20px;
-    width: calc(100% - 55px);
+    width: 90%;
     display: flex;
     align-items: center;
     padding: 10px;
+    margin-top: auto;
     background: rgba(255, 255, 255, 0.1);
     border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
@@ -636,6 +743,22 @@ main {
     background: linear-gradient(90deg, #299BFF, #2c67f2);
 }
 
+#sendButton2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+
+}
+
+#sendButton2 img {
+  width: 24px; /* Set your desired width */
+  height: 24px; /* Set your desired height */
+  cursor: pointer;
+}
+
 .sendButton {
     display: flex;
     justify-content: center;
@@ -658,11 +781,11 @@ main {
     width: 45px;
     justify-content: center;
     height: 45px;
-    border: 1px solid #ffffff;
     border-radius: 10px;
     margin-left: 5px;
     cursor: pointer;
-    background: #00000000;
+    border: 1px solid rgba(87, 255, 255, 0.34);
+    background: linear-gradient(90deg, #cecece41, #d9d9d920);
 }
   
 
@@ -787,11 +910,6 @@ p {
     border-left: 1px solid #fff; /* Adjust the color as needed */
   }
 
-  .user-input {
-    padding: 5px;
-    bottom: 10px;
-  }
-
   #promptInput {
     padding-top: 10px;
     padding-bottom: 10px;
@@ -827,11 +945,72 @@ p {
     margin: 0; /* Remove margin */
   }
 
+  .power2 {
+    font-size: 4px;
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    margin: 0; /* Remove margin */
+  }
   .logo {
-    width: 180px;
+    width: 150px;
     height: auto;
-    margin-left: 27px;
 }
+
+.dropdown_menu {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  right: 1.5rem;
+  padding: 15px;
+  top: 100px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  max-height: 0;
+  opacity: 0;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  border-top-right-radius: 15px;
+  border-top-left-radius: 15px;
+  backdrop-filter: blur(10px);
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  z-index: 1000;
+}
+
+.dropdown_menu.open {
+  max-height: 500px;
+  opacity: 1;
+}
+
+.dropdown_menu .navBtn2{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 12px;
+}
+
+.dropdown_menu .custom-button{
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 12px;
+}
+.dropdown_menu .navBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 0;
+  margin-left: 0;
+  font-size: 12px;
+}
+
+
 
 .inputContainer {
   width: calc(100% - 40px);
@@ -847,6 +1026,7 @@ p {
   position: relative;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  z-index: 1;
 } 
 
 .outputTxt{
@@ -860,13 +1040,8 @@ p {
 .user-input {
   position: fixed;
   bottom: 20px;
-  left: 20px;
-  margin-right: 10px;
-  right: 20px;
-  width: calc(100% - 55px);
   display: flex;
   align-items: center;
-  padding: 10px;
   background: rgba(255, 255, 255, 0.1);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
@@ -1008,6 +1183,44 @@ h3 {
   width: 40px; /* Set your desired width */
   height: 40px; /* Set your desired height */
   margin-top: 20px;
+}
+
+#sendButton2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 35px;
+  border-radius: 10px;
+  margin-right: 0;
+  margin-left: 0;
+  border: 1px solid rgba(87, 255, 255, 0.34);
+  background: linear-gradient(90deg, #cecece41, #d9d9d920);
+}
+
+#sendButton2 img {
+  width: 23px;
+  height: 23px;
+  cursor: pointer;
+}
+
+.logodiv3 {
+  display: flex;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 10px;
+  margin-right: 0;
+  padding-bottom: 10px;
+}
+
+.logodiv2 {
+  display: none;
+}
+
+.logodiv {
+  display: flex;
+  height: auto;
+  padding: 0 0 0 0;
 }
 
 }

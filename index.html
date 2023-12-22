@@ -47,7 +47,6 @@
     <script src="script.js" defer></script>
 </head>
 <body>
-  <section>
     <div class="logodiv">
       <img src="images/sentient logo.png" class="logo">
       <div class="separator"></div>
@@ -64,7 +63,20 @@
         Generate Image
       </button>     
     </div>
-  </section>
+    <div class="logodiv3">
+      <button id="sendButton2" onclick="drop()">
+        <img src="images/more-2.svg" alt="Send Button">
+    </button>
+    </div>
+
+    <div class="dropdown_menu">
+      <button type="submit" class="navBtn">Home</button>
+      <button type="submit" class="navBtn2">About</button>
+      <button class="custom-button" onclick="next()">
+        <img src="images/imagegenpng.png" alt="Image">
+        Generate Image
+      </button>
+    </div>
     <div class="inputContainer">
       <p id="output" class="outputTxt"></p>
       <div class="container" style="display: none;">
@@ -277,6 +289,10 @@
 
         window.next = function () {
   window.location.href = 'image_generate.html';
+}
+window.drop = function (){
+  const dropdownmenu = document.querySelector(".dropdown_menu")
+  dropdownmenu.classList.toggle('open')
 }
   </script>
   <footer class="bg-gray-800 text-white py-8" style="display: none;">

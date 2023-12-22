@@ -65,6 +65,22 @@
                 Close this
               </button>
             </div>
+
+            <div class="logodiv3">
+              <button id="sendButton2" onclick="drop()">
+                <img src="images/more-2.svg" alt="Send Button">
+            </button>
+            </div>
+
+            <div class="dropdown_menu">
+              <button type="submit" class="navBtn">Home</button>
+              <button type="submit" class="navBtn2">About</button>
+              <button class="custom-button" onclick="next()">
+                <img src="images/imagegenpng.png" alt="Image">
+                Generate Image
+              </button>
+            </div>
+
         </div>
         <div class="image-generator">
             <section class="image-gallery">
@@ -179,6 +195,11 @@ const handleImageGeneration = (e) => {
 generateForm.addEventListener("submit", handleImageGeneration);
 window.back = function () {
   window.location.href = 'index.html';
+}
+
+window.drop = function (){
+  const dropdownmenu = document.querySelector(".dropdown_menu")
+  dropdownmenu.classList.toggle('open')
 }
     </script>
 </body>
