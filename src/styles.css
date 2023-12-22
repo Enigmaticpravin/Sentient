@@ -202,7 +202,8 @@ main {
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-top: 150px;
+  margin-top: 120px;
+  margin-bottom: 100px;
   justify-content: center;
   position: relative;
 }
@@ -350,7 +351,7 @@ main {
     height: 80px;
     align-items: flex-start;
     z-index: 1;
-    top: 150px;
+    top: 130px;
     left: 0;
   }
 
@@ -373,8 +374,8 @@ main {
   }
 
   .image-gallery .img-card {
-    width: 50%; /* Display cards in a single column */
-    aspect-ratio: unset; /* Remove aspect-ratio for smaller screens */
+    width: 285px; /* Display cards in a single column */
+    aspect-ratio: 1/1;
     margin-bottom: 10px; /* Add spacing between cards */
     flex-direction: column;
     flex: 0 0 40%;
@@ -382,8 +383,8 @@ main {
   }
 
   .image-gallery .img-card.loading img {
-    width: 40px;
-    height: 40px;
+    width: 100px;
+    height: 100px;
   }
 
   .image-gallery .img-card .download-btn {
@@ -611,7 +612,7 @@ main {
   font-size: 7px;
   color: #fff;
   font-family: 'Poppins', sans-serif;
-  margin: 0; /* Remove margin */
+  margin: 0;
 }
 .power2 {
   font-size: 7px;
@@ -793,7 +794,7 @@ main {
     position: relative;
     text-align: center;
     align-items: center;
-    margin-top: 100px;
+    margin-bottom: 80px;
     display: none;
     flex-direction: column;
     justify-content: center;
@@ -836,7 +837,6 @@ h3 {
     border-radius: 10px;
     align-items: center;
     padding: 5px 20px 5px 20px;
-    margin-top: 10px;
 
 }
 
@@ -864,12 +864,11 @@ h3 {
     align-items: center;
     justify-content: center;
     width: fit-content;
-    margin: 0 auto;
-    margin-top: 150px;
     border-radius: 10px;
     padding: 20px;
     position: relative;
     background: #ffffff;
+    margin-bottom: 80px;
     text-align: center;
 }
 .progress-container2 p {
@@ -924,12 +923,25 @@ p {
     margin-bottom: -2px;
     justify-content: center;
     align-items: center;
+    margin-right: 0;
   }
   
   .geminilogo {
     width: 40px;
     height: auto;
-    margin: 0; /* Remove margin */
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+  }
+  
+  .gemini2{
+    padding: 8px;
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -2px;
+    justify-content: center;
+    padding: 13px;
+    margin-right: 0;
+    align-items: center;
   }
   
   #promptInput::placeholder {
@@ -954,6 +966,7 @@ p {
   .logo {
     width: 150px;
     height: auto;
+    margin-left: 15px;
 }
 
 .dropdown_menu {
@@ -1010,32 +1023,29 @@ p {
   font-size: 12px;
 }
 
-
-
 .inputContainer {
   width: calc(100% - 40px);
-  height: 515px;
+  height: auto;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   border-bottom-left-radius: 10px;
-  top: 86px; /* Set to the height of the toolbar */
+  top: 96px;
+  bottom: 186px;
   border-bottom-right-radius: 10px;
-  justify-content: center;
-  align-items: center;
+  margin-bottom: 200px;
+  text-align: top;
   background: linear-gradient(260deg, #faece224, rgba(250, 255, 255, 0.174));
-  position: relative;
-  overflow: hidden;
-  backdrop-filter: blur(10px);
   z-index: 1;
 } 
 
-.outputTxt{
+.outputTxt {
   font-family: 'Poppins', sans-serif;
   font-size: 12px;
   text-align: left;
   color: #fff;
-  padding: 10px 20px 20px 20px;
+  padding: 20px 20px 20px 20px;
 }
+
 
 .user-input {
   position: fixed;
@@ -1046,6 +1056,7 @@ p {
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-right-radius: 10px;
+  z-index: 1000;
   border-top-left-radius: 10px;
 }
 
@@ -1161,14 +1172,13 @@ h3 {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: fit-content;
-  margin: 0 auto;
-  margin-top: 150px;
+  width: 100px;
   border-radius: 5px;
-  padding-top: 10px;
+  padding-top: 2px;
   padding-left: 10px;
   padding-bottom: 10px;
   padding-right: 10px;
+  margin-bottom: 80px;
   position: relative;
   background: #ffffff;
   text-align: center;
@@ -1220,6 +1230,7 @@ h3 {
 .logodiv {
   display: flex;
   height: auto;
+  width: min-content;
   padding: 0 0 0 0;
 }
 

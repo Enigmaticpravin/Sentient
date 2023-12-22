@@ -184,6 +184,16 @@
       }
   }
 
+  function decodeHtmlEntities(text) {
+  const doc = new DOMParser().parseFromString(text, 'text/html');
+  return doc.body.textContent;
+}
+
+function replaceLineBreaks(text) {
+  // Replace line breaks with <br> tags
+  return text.replace(/\n/g, '<br>');
+}
+
   window.play = async function () {
     const promptInput = document.getElementById('promptInput');
 
@@ -212,8 +222,9 @@
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
       console.log(chunkText);
-      text += chunkText;
-      document.getElementById('output').textContent = text;
+      text += replaceLineBreaks(chunkText);
+      const decodedText = decodeHtmlEntities(text);
+      document.getElementById('output').innerHTML = decodedText;
     }
 
     const progressRay = document.getElementById('progressRay');
