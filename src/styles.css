@@ -363,6 +363,10 @@ main {
   margin-bottom: 30px;
 }
 
+.transCard {
+  display: none;
+}
+
 .book-list {
   display: flex;
   list-style: none;
@@ -413,7 +417,6 @@ main {
   border-radius: 1rem;
   padding: 2rem;
   max-width: 90%;
-  position: relative;
   margin: 150px auto 20px;
   font-family: Arial, sans-serif;
 }
@@ -441,7 +444,7 @@ main {
   align-items: center;
 }
 
-.container {
+.containerbtn {
   text-align: center;
 }
 
@@ -540,7 +543,9 @@ main {
   .booktitle {
     margin-top: 10px;
     color: #fff;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
+    font-size: 15px;
+    margin-top: 30px;
   }
 
   .book-list {
@@ -552,6 +557,14 @@ main {
     margin-bottom: 30px;
   }
 
+  .contact-list {
+    display: grid;
+    grid-template-columns: repeat(2, 0fr);
+    justify-content: center;
+    margin-top: 10px;
+    gap: 20px;
+    margin-bottom: 10px;
+  }
   .book {
     width: 80px;
     height: 130px;
@@ -582,20 +595,10 @@ main {
   }
 
   .custom-card {
-    display: block;
-    justify-content: center;
-    align-items: center;
-    background-color: #f0f4f8;
-    border-radius: 1rem;
-    padding: 2rem;
-    position: relative;
-    margin: 100px auto 10px;
-    width: 50%;
-    height: fit-content;
-    font-family: Arial, sans-serif;
-    overflow: hidden;
+    margin: 20px auto;
+    display: none;
+    padding: 1rem;
   }
-  
   .centering-container {
     display: flex;
     justify-content: center;
@@ -604,10 +607,10 @@ main {
   }
   
   .spare {
-    background-color: #374151;
+    background-color: #d6d6d6;
     width: 90px;
     margin-bottom: 30px;
-    height: 2px;
+    height: 1.2px;
     border-radius: 50%;
   }
   
@@ -619,13 +622,16 @@ main {
     align-items: center;
   }
   
-  .container {
+  .containerbtn {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    width: fit-content;
   }
   
   .cta-button {
-    display: inline-block;
-    padding: 4px 20px;
+    display: flex;
+    padding: 8px 30px;
     font-size: 14px;
     background-color: #3498db;
     color: #fff;
@@ -634,12 +640,25 @@ main {
     cursor: pointer;
     position: relative;
     align-content: center;
+    width: 140px;
     overflow: hidden;
     transition: background-color 0.3s ease;
   }
+
+  .transCard{
+    display: block;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    margin-top: 100px;
+    padding: 20px 20px 20px 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
   
   .develop {
-    color: #2980b9;
+    color: #61a5ff;
     margin: 0 0 0 0;
     padding: 0 0 0 0;
     margin-bottom: 20px;
@@ -692,10 +711,10 @@ main {
   
   .custom-quote {
     font-family: 'Poppins', sans-serif;
-    font-size: 17px;
+    font-size: 13px;
     text-align: left;
     color: #fff;
-    padding: 20px 40px 40px 40px;
+    padding: 0 0 0 0;
   }
   
   .custom-author {
@@ -703,14 +722,14 @@ main {
   }
   
   .custom-author-name {
-    color: #1a73e8;
+    color: #61a5ff;
     font-weight: 500;
     margin-top: 20px;
     font-size: 14px;
   }
   
   .custom-author-title {
-    color: #374151;
+    color: #dedede;
     font-weight: 400;
     font-size: 12px;
   }
@@ -1421,10 +1440,10 @@ p {
 
 .info{
   font-family: 'Poppins', sans-serif;
-  font-size: 17px;
+  font-size: 12px;
   text-align: left;
-  color: #000000;
-  padding: 20px 40px 40px 40px;
+  color: #ffffff;
+  padding: 20px 20px 20px 20px;
 }
 
 .user-input {

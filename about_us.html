@@ -57,7 +57,7 @@
     </div>   
     <div class="logodiv2">
       <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
-      <button type="submit" class="navBtn2">About</button>
+      <button type="submit" class="navBtn2" onclick="location.href='about_us.html';">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
         Generate Image
@@ -71,11 +71,74 @@
 
     <div class="dropdown_menu">
       <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
-      <button type="submit" class="navBtn2">About</button>
+      <button type="submit" class="navBtn2" onclick="location.href='about_us.html';">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
         Generate Image
       </button>
+    </div>
+
+    <div class="transCard">
+      <h2 class="develop">Developed by</h2>
+      <div class="centering-container">
+        <div class="spare"></div>
+      </div>
+      <img class="custom-image" src="images/black pravin.jpg" alt="Pravin Gupta">
+      <figcaption>
+        <div class="custom-author-name">
+          Pravin Gupta
+        </div>
+        <div class="custom-author-title">
+          Founder, CEO at Opion
+        </div>
+      </figcaption>
+      <div>
+        <p class="info">
+          <i><b>Pravin Gupta</b></i>
+          (born 11 March, 2004) is an Indian author, poet and Wildlife Photographer. He is also the Founder, CEO of Opion (a knowledge-driven app). As of 2022, he has authored six books, five in English and one in Hindi. His debut work, The Dark Light: Amethyst Heart in the City, is the first installment in an epic six-part tale of The Dark Light, of which second part, Resurrection of the Mistress outperformed just after its publication. He has been featured in and interviewed by many national newspapers. Mr. Gupta currently lives in Delhi.
+        </p>
+        <h2 class="develop">Contact Me</h2>
+      <div class="centering-container">
+        <div class="spare"></div>
+      </div>
+      <div class="contact-list">
+        <div class="containerbtn">
+          <button onclick="window.location.href='https://www.instagram.com/enigmaticpravin/'" class="cta-button">
+            <img src="images/Instagram_icon.png.webp" alt="Image">
+              Instagram
+              <span class="glow"></span>
+          </button>
+      </div>
+      <div class="containerbtn">
+        <button onclick="window.location.href='https://www.quora.com/profile/Pravin-Gupta-89'" class="cta-button">
+          <img src="images/quora.jpeg" alt="Image">  
+          Quora
+            <span class="glow"></span>
+        </button>
+    </div>
+    <div class="containerbtn">
+      <button onclick="window.location.href='https://www.linkedin.com/in/enigmaticpravin/'" class="cta-button">
+        <img src="images/LinkedIn_logo_initials.png" alt="Image">    
+        LinkedIn
+          <span class="glow"></span>
+      </button>
+  </div>
+  <div class="containerbtn">
+    <button onclick="window.location.href='https://github.com/Enigmaticpravin'" class="cta-button">
+      <img src="images/github.png" alt="Image"> 
+        GitHub
+        <span class="glow"></span>
+    </button>
+</div>
+<div class="containerbtn">
+  <button onclick="window.location.href='mailto:pravingupta2020@gmail.com?subject=Sentient'" class="cta-button">
+    <img src="images/Gmail_Logo_512px.png" alt="Image"> 
+      Email
+      <span class="glow"></span>
+  </button>
+</div>
+      </div>
+      </div>
     </div>
 
     <figure class="custom-card">
@@ -364,7 +427,7 @@ function replaceLineBreaks(text) {
         setInterval(textLoad, 12000);
 
         window.next = function () {
-  window.location.href = 'image_generate.html';
+          alert("Coming soon!");
 }
 window.drop = function (){
   const dropdownmenu = document.querySelector(".dropdown_menu")

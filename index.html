@@ -56,7 +56,7 @@
       </div>
     </div>   
     <div class="logodiv2">
-      <button type="submit" class="navBtn">Home</button>
+      <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
       <button type="button" class="navBtn2" onclick="location.href='about_us.html';">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
@@ -70,8 +70,8 @@
     </div>
 
     <div class="dropdown_menu">
-      <button type="submit" class="navBtn">Home</button>
-      <button type="submit" class="navBtn2">About</button>
+      <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
+      <button type="submit" class="navBtn2" onclick="location.href='about_us.html';">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
         Generate Image
@@ -299,7 +299,7 @@ function replaceLineBreaks(text) {
         setInterval(textLoad, 12000);
 
         window.next = function () {
-  window.location.href = 'image_generate.html';
+          alert("Coming soon!");
 }
 window.drop = function (){
   const dropdownmenu = document.querySelector(".dropdown_menu")
