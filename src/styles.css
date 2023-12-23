@@ -69,6 +69,7 @@ body {
   border-top-left-radius: 15px;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logodiv2 {
@@ -93,6 +94,7 @@ body {
   border-top-left-radius: 15px;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .logodiv3 {
@@ -117,6 +119,7 @@ body {
   border-top-left-radius: 15px;
   overflow: hidden;
   backdrop-filter: blur(10px);
+  z-index: 1000;
 }
 
 .generate-btn2 {
@@ -165,6 +168,14 @@ main {
 
 /* Styling for the image inside the button */
 .custom-button img {
+  width: 20px; /* Adjust the width of the image */
+  height: 20px; /* Adjust the height of the image */
+  margin-right: 5px; /* Add some space between the image and text */
+  border-radius: 10px;
+  vertical-align: middle; /* Align the image vertically with the text */
+}
+
+.cta-button img {
   width: 20px; /* Adjust the width of the image */
   height: 20px; /* Adjust the height of the image */
   margin-right: 5px; /* Add some space between the image and text */
@@ -346,7 +357,370 @@ main {
   pointer-events: auto;
 }
 
+.booktitle{
+  margin-top: 30px;
+  color: #fff;
+  margin-bottom: 30px;
+}
+
+.book-list {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  justify-content: center;
+}
+
+    .book {
+      width: 140px;
+      height: 220px;
+      margin: 0 10px;
+      perspective: 800px;
+      cursor: pointer;
+      transition: transform 0.5s;
+      position: relative;
+    }
+
+    .cover,
+    .back {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      border-radius: 5px;
+    }
+
+    .cover img,
+    .back img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 5px;
+    }
+
+.maindiv2 {
+  display: block;
+}
+
+.custom-card {
+  display: block;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f4f8;
+  border-radius: 1rem;
+  padding: 2rem;
+  max-width: 90%;
+  position: relative;
+  margin: 150px auto 20px;
+  font-family: Arial, sans-serif;
+}
+
+.centering-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.spare {
+  background-color: #374151;
+  width: 100px;
+  margin-bottom: 30px;
+  height: 2px;
+  border-radius: 50%;
+}
+
+.authorcontain{
+  display:flex ;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 8px 40px;
+  font-size: 18px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 15px;
+  cursor: pointer;
+  position: relative;
+  align-content: center;
+  overflow: hidden;
+  transition: background-color 0.3s ease;
+}
+
+.develop {
+  color: #2980b9;
+  margin: 0 0 0 0;
+  padding: 0 0 0 0;
+  margin-bottom: 30px;
+}
+
+.cta-button:hover {
+  background-color: #2980b9;
+}
+
+.glow {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+  animation: glowAnimation 2s infinite;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  opacity: 0;
+}
+
+@keyframes glowAnimation {
+  0% {
+      transform: translate(-50%, -50%) scale(0);
+      opacity: 1;
+  }
+  100% {
+      transform: translate(-50%, -50%) scale(2);
+      opacity: 0;
+  }
+}
+
+.custom-image {
+  width: 180px; /* Set the width */
+  height: 180px; /* Automatically adjust the height to maintain aspect ratio */
+  object-fit: cover;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.custom-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* Align content to the top (left-aligned) */
+}
+
+.custom-quote {
+  font-size: 1.25rem;
+  margin-top: 1rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  margin-right: 50px;
+  margin-left: 50px;
+  text-align: justify;
+}
+
+.custom-author {
+  text-align: left; /* Left-align the author info */
+}
+
+.custom-author-name {
+  color: #1a73e8;
+  font-weight: 500;
+  margin-top: 20px;
+}
+
+.custom-author-title {
+  color: #374151;
+  font-weight: 400;
+}
+
 @media screen and (max-width: 760px) {
+  .booktitle {
+    margin-top: 10px;
+    color: #fff;
+    margin-bottom: 10px;
+  }
+
+  .book-list {
+    display: grid;
+    grid-template-columns: repeat(3, 0fr);
+    gap: 20px;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
+
+  .book {
+    width: 80px;
+    height: 130px;
+    perspective: 800px;
+    cursor: pointer;
+    flex-direction: column;
+    transition: transform 0.5s;
+    position: relative;
+  }
+
+  .cover,
+  .back {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    border-radius: 5px;
+  }
+
+  .cover img,
+  .back img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+  }
+
+  .custom-card {
+    display: block;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f4f8;
+    border-radius: 1rem;
+    padding: 2rem;
+    position: relative;
+    margin: 100px auto 10px;
+    width: 50%;
+    height: fit-content;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+  }
+  
+  .centering-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .spare {
+    background-color: #374151;
+    width: 90px;
+    margin-bottom: 30px;
+    height: 2px;
+    border-radius: 50%;
+  }
+  
+  .authorcontain{
+    display:flex ;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+  }
+  
+  .container {
+    text-align: center;
+  }
+  
+  .cta-button {
+    display: inline-block;
+    padding: 4px 20px;
+    font-size: 14px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    position: relative;
+    align-content: center;
+    overflow: hidden;
+    transition: background-color 0.3s ease;
+  }
+  
+  .develop {
+    color: #2980b9;
+    margin: 0 0 0 0;
+    padding: 0 0 0 0;
+    margin-bottom: 20px;
+    font-size: 15px;
+  }
+  
+  .cta-button:hover {
+    background-color: #2980b9;
+  }
+  
+  .glow {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 0%, transparent 100%);
+    animation: glowAnimation 2s infinite;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    opacity: 0;
+  }
+  
+  @keyframes glowAnimation {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 1;
+    }
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+  }
+  
+  .custom-image {
+    width: 100px; /* Set the width */
+    height: 100px; /* Automatically adjust the height to maintain aspect ratio */
+    object-fit: cover;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    border-radius: 20px;
+  }
+  
+  .custom-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  .custom-quote {
+    font-family: 'Poppins', sans-serif;
+    font-size: 17px;
+    text-align: left;
+    color: #fff;
+    padding: 20px 40px 40px 40px;
+  }
+  
+  .custom-author {
+    text-align: left;
+  }
+  
+  .custom-author-name {
+    color: #1a73e8;
+    font-weight: 500;
+    margin-top: 20px;
+    font-size: 14px;
+  }
+  
+  .custom-author-title {
+    color: #374151;
+    font-weight: 400;
+    font-size: 12px;
+  }
+}
+  
+  .maindiv2 {
+    display: block;
+  }
+  
+
   .image-generator {
     height: 80px;
     align-items: flex-start;
@@ -441,7 +815,6 @@ main {
     opacity: 1;
     pointer-events: auto;
   }
-}
 
 .navBtn {
   font-size: 1rem;
@@ -1046,6 +1419,13 @@ p {
   padding: 20px 20px 20px 20px;
 }
 
+.info{
+  font-family: 'Poppins', sans-serif;
+  font-size: 17px;
+  text-align: left;
+  color: #000000;
+  padding: 20px 40px 40px 40px;
+}
 
 .user-input {
   position: fixed;

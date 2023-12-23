@@ -44,9 +44,9 @@
     <link rel="manifest" href="images/site.webmanifest">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap">
     <link rel="stylesheet" href="src/styles.css">
-    <script src="script.js" defer></script>
 </head>
 <body>
+  <div class="maindiv2">
     <div class="logodiv">
       <img src="images/sentient logo.png" class="logo">
       <div class="separator"></div>
@@ -56,8 +56,8 @@
       </div>
     </div>   
     <div class="logodiv2">
-      <button type="submit" class="navBtn">Home</button>
-      <button type="button" class="navBtn2" onclick="location.href='about_us.html';">About</button>
+      <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
+      <button type="submit" class="navBtn2">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
         Generate Image
@@ -70,50 +70,115 @@
     </div>
 
     <div class="dropdown_menu">
-      <button type="submit" class="navBtn">Home</button>
+      <button type="submit" class="navBtn" onclick="location.href='index.html';">Home</button>
       <button type="submit" class="navBtn2">About</button>
       <button class="custom-button" onclick="next()">
         <img src="images/imagegenpng.png" alt="Image">
         Generate Image
       </button>
     </div>
-    <div class="inputContainer">
-      <p id="output" class="outputTxt"></p>
-      <div class="container" style="display: none;">
-        <span class="text first-text">I'm a</span>
-        <span class="text sec-text">Freelancer</span>
-    </div>
-      <div id="progressRay" class="progress-container2" style="display: none;">
-        <img id="progressBar" src="images/progress.gif" alt="Progress Indicator">
-        <p>Please wait...</p>
-    </div>    
-      <div id="selectedImageLay" class="relative-container">
-        <h3 id="moon">selected image</h3>
-    
-        <div id="selected" class="rounded-image">
-            <!-- Your image source here -->
-        </div>
-    
-        <button id="dismissBtn" class="dismiss-button" onclick="dismiss()">dismiss</button>
-    
-        <div id="progressImage" class="progress-container">
-            <img id="progress_circular" src="images/progress.gif" alt="Processing Indicator">
-            <p>processing your image...</p>
-        </div>
-    </div>
-    
-    </div>
-  <div class="user-input">
-  <button id="galleryButton" for="fileInput">
-    <img class="imageicon" src="images/gallery.svg" alt="Gallery Image" style="cursor: pointer;" onclick="document.getElementById('fileInput').click()">
-    <input type="file" id="fileInput" accept="image/*" onchange="handleImageSelection()" style="display: none;">
-  </button>
-    <input type="text" id="promptInput" placeholder="What do you want me to do?" required>
-    <button id="sendButton">
-      <img onclick="handleSendButton()" src="images/send-2.svg" alt="Send Button">
-  </button>
-  </div>
 
+    <figure class="custom-card">
+      <h2 class="develop">Developed by</h2>
+      <div class="centering-container">
+        <div class="spare"></div>
+      </div>
+      <img class="custom-image" src="images/black pravin.jpg" alt="Pravin Gupta">
+      <figcaption>
+        <div class="custom-author-name">
+          Pravin Gupta
+        </div>
+        <div class="custom-author-title">
+          Founder, CEO at Opion
+        </div>
+      </figcaption>
+      <div class="custom-content">
+        <blockquote class="custom-quote">
+          <p class="info">
+            <i><b>Pravin Gupta</b></i>
+            (born 11 March, 2004) is an Indian author, poet and Wildlife Photographer. He is also the Founder, CEO of Opion (a knowledge-driven app). As of 2022, he has authored six books, five in English and one in Hindi. His debut work, The Dark Light: Amethyst Heart in the City, is the first installment in an epic six-part tale of The Dark Light, of which second part, Resurrection of the Mistress outperformed just after its publication. He has been featured in and interviewed by many national newspapers. Mr. Gupta currently lives in Delhi.
+          </p>
+        </blockquote>
+        <h2 class="develop">Contact Me</h2>
+      <div class="centering-container">
+        <div class="spare"></div>
+      </div>
+        <div class="authorcontain">
+          <div class="container">
+            <button onclick="window.location.href='https://www.instagram.com/enigmaticpravin/'" class="cta-button">
+              <img src="images/Instagram_icon.png.webp" alt="Image">
+                Instagram
+                <span class="glow"></span>
+            </button>
+        </div>
+        <div class="container">
+          <button onclick="window.location.href='https://www.quora.com/profile/Pravin-Gupta-89'" class="cta-button">
+            <img src="images/quora.jpeg" alt="Image">  
+            Quora
+              <span class="glow"></span>
+          </button>
+      </div>
+      <div class="container">
+        <button onclick="window.location.href='https://www.linkedin.com/in/enigmaticpravin/'" class="cta-button">
+          <img src="images/LinkedIn_logo_initials.png" alt="Image">    
+          LinkedIn
+            <span class="glow"></span>
+        </button>
+    </div>
+    <div class="container">
+      <button onclick="window.location.href='https://github.com/Enigmaticpravin'" class="cta-button">
+        <img src="images/github.png" alt="Image"> 
+          GitHub
+          <span class="glow"></span>
+      </button>
+  </div>
+  <div class="container">
+    <button onclick="window.location.href='mailto:pravingupta2020@gmail.com?subject=Sentient'" class="cta-button">
+      <img src="images/Gmail_Logo_512px.png" alt="Image"> 
+        Email
+        <span class="glow"></span>
+    </button>
+</div>
+        </div>
+      </div>
+    </figure>
+    <div>
+      <h2 class="booktitle">My Books</h2>
+      <div class="centering-container">
+        <div class="spare"></div>
+      </div>
+      <ul class="book-list">
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/dark2.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/glimpse.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/dark1.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/unsaid.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/61WHG23pLHL._AC_UF1000,1000_QL80_.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/star.jpg" alt="Back Cover"></div>
+        </li>
+        <li class="book">
+          <div class="cover"><img src="images/black pravin.jpg" alt="Front Cover"></div>
+          <div class="back"><img src="images/kichad.jpg" alt="Back Cover"></div>
+        </li>
+      </ul>
+    </div>
+  </div>
   <script type="importmap">
     {
       "imports": {
