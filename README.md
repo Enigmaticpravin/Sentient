@@ -19,14 +19,12 @@ This repo contains the official source code for [Sentient]([https://play.google.
 
 ## Getting Started
 
-I welcome all coding enthusiasts to use the source code of Knowlio to understand UI/UX, backend, and AI integration through practical approach.
-Commercialization of this project is strictly prohibited. All rights are reserved with [Opion](https://play.google.com/store/apps/dev?id=7878540601693008583)
+We extend a warm invitation to coding enthusiasts to explore and utilize the source code of Sentient for gaining insights into UI/UX, backend development, and practical AI integration.
 
 1. **Clone the Repository:**
 
    ```bash
-   git clone https://github.com/Enigmaticpravin/Glassmorphism-Analog-Clock.git
-   cd glassmorphism-analog-clock
+   git clone https://github.com/Enigmaticpravin/Sentient.git
 
 2. **Install Dependencies:**
 Ensure you have the required dependencies installed. You may need to install specific libraries based on your environment.
@@ -37,14 +35,7 @@ Configure the Gemini framework according to the documentation provided by Google
 4. **Run Sentient:**
 Start Sentient by running the main application script. This script should handle both text and image inputs.
 
-### Compilation Guide
+## Contact Me
+For questions, issues, or collaboration opportunities, feel free to reach out to us at pravingupta2020@gmail.com
 
-**Note**: This repo contains dummy release.keystore,  google-services.json and filled variables inside BuildVars.java. Before publishing your own APKs please make sure to replace all these files with your own.
-
-You will require Android Studio 3.4, Android NDK rev. 20 and Android SDK 8.1
-
-1. Download the Knowlio source code from this repo.
-2. Copy your release.keystore into TMessagesProj/config
-3.  Go to https://console.firebase.google.com/, create an android app with a different application ID, turn on firebase messaging and download google-services.json.
-4.  Open the project in the Studio (note that it should be opened, NOT imported).
-5. You are ready to compile Knowlio.
+Happy coding with Sentient!
