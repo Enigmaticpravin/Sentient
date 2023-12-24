@@ -125,13 +125,14 @@
   <script type="module">
    import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
-    const API_KEY = "AIzaSyAXE8ZkUvf7jCYos4uygfjd26W6hRiU2qQ";
-    const genAI = new GoogleGenerativeAI(API_KEY);
+  const API_KEY = "AIzaSyAXE8ZkUvf7jCYos4uygfjd26W6hRiU2qQ";
+  const genAI = new GoogleGenerativeAI(API_KEY);
 
-    window.handleImageSelection = function() {
+  window.handleImageSelection = function() {
     // Hide the progressImage div and show the selectedImageLay div
     document.getElementById('progressImage').style.display = 'none';
     document.getElementById('selectedImageLay').style.display = 'flex';
+    document.getElementById('dismissBtn').style.display = 'flex';
 
     document.getElementById('output').textContent = "";
 
@@ -153,14 +154,13 @@
     const fileInputEl = document.getElementById('fileInput');
     fileInputEl.value = null;
     document.getElementById('selectedImageLay').style.display = 'none';
-
   }
 
-    window.handleSendButton = function() {
-      const fileInputEl = document.getElementById('fileInput');
-      const promptText = document.getElementById('promptInput').value.trim();
-      if (promptText !== ""){
-        if (fileInputEl.files.length > 0) {
+  window.handleSendButton = function() {
+    const fileInputEl = document.getElementById('fileInput');
+    const promptText = document.getElementById('promptInput').value.trim();
+    if (promptText !== ""){
+      if (fileInputEl.files.length > 0) {
         const dismissBtn = document.getElementById('dismissBtn');
         dismissBtn.style.display = "none";
         const progress = document.getElementById('progressImage');
@@ -172,45 +172,35 @@
         document.getElementById('promptInput').value = "";
         document.getElementById('output').textContent = "";
 
-    } else {
-      const progressRay = document.getElementById('progressRay');
-      progressRay.style.display = progressRay.style.display === 'none' ? 'flex' : 'none';
-      play();
-      document.getElementById('promptInput').value = "";
-      document.getElementById('output').textContent = "";
-    }
       } else {
-        alert("Please enter a prompt to proceed!")
+        const progressRay = document.getElementById('progressRay');
+        progressRay.style.display = progressRay.style.display === 'none' ? 'flex' : 'none';
+        play();
+        document.getElementById('promptInput').value = "";
+        document.getElementById('output').textContent = "";
       }
+    } else {
+      alert("Please enter a prompt to proceed!")
+    }
   }
-
-  function decodeHtmlEntities(text) {
-  const doc = new DOMParser().parseFromString(text, 'text/html');
-  return doc.body.textContent;
-}
-
-function replaceLineBreaks(text) {
-  // Replace line breaks with <br> tags
-  return text.replace(/\n/g, '<br>');
-}
 
   window.play = async function () {
     const promptInput = document.getElementById('promptInput');
 
     const safetySettings = [
-  {
-    category: HarmCategory.HARM_CATEGORY_HARASSMENT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-  {
-    category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
-    threshold: HarmBlockThreshold.BLOCK_NONE,
-  },
-];
+      {
+        category: HarmCategory.HARM_CATEGORY_HARASSMENT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_HATE_SPEECH,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+      {
+        category: HarmCategory.HARM_CATEGORY_SEXUALLY_EXPLICIT,
+        threshold: HarmBlockThreshold.BLOCK_NONE,
+      },
+    ];
 
     const model = genAI.getGenerativeModel({ model: "gemini-pro", safetySettings });
 
@@ -222,9 +212,8 @@ function replaceLineBreaks(text) {
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
       console.log(chunkText);
-      text += replaceLineBreaks(chunkText);
-      const decodedText = decodeHtmlEntities(text);
-      document.getElementById('output').innerHTML = decodedText;
+      text += chunkText;
+      document.getElementById('output').innerHTML = text;
     }
 
     const progressRay = document.getElementById('progressRay');
@@ -265,9 +254,8 @@ function replaceLineBreaks(text) {
       const chunkText = chunk.text();
       console.log(chunkText);
       text += chunkText;
+      document.getElementById('output').textContent = text;
     }
-
-    document.getElementById('output').textContent = text;
 
     const progressLay = document.getElementById('selectedImageLay');
     progressLay.style.display = 'none';
