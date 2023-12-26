@@ -7,14 +7,12 @@
     <meta name="title" content="An AI that does it all!">
     <meta name="description" content="Meet Sentient – your all-knowing AI buddy! Ask anything, show it a pic, and watch the magic unfold. It's not just an AI; it's your personalized answer wizard with a touch of visual genius. Welcome to a whole new level of questioning and discovery!">
 
-    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sentientai.netlify.app/">
     <meta property="og:title" content="An AI that does it all!">
     <meta property="og:description" content="Meet Sentient – your all-knowing AI buddy! Ask anything, show it a pic, and watch the magic unfold. It's not just an AI; it's your personalized answer wizard with a touch of visual genius. Welcome to a whole new level of questioning and discovery!">
     <meta property="og:image" content="images/og-image.webp">
 
-    <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://sentientai.netlify.app/">
     <meta property="twitter:title" content="An AI that does it all!">
@@ -29,7 +27,6 @@
 
     <meta name="language" content="English">
     <meta name="author" content="Sentient">
-
 
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/assets/images/favicon/ms-icon-144x144.png">
@@ -78,6 +75,12 @@
       </button>
     </div>
     <div class="inputContainer">
+      <div id="questionContainer" class="question-container" style="display: none;">
+        <p id="question" class="question"></p>
+        <div id="selectedImageContainer" class="selected-image-container" style="display: none;">
+          <div id="selected2" class="rounded-image2"></div>
+        </div>
+      </div>
       <p id="output" class="outputTxt"></p>
       <div class="container" style="display: none;">
         <span class="text first-text">I'm a</span>
@@ -91,7 +94,6 @@
         <h3 id="moon">selected image</h3>
     
         <div id="selected" class="rounded-image">
-            <!-- Your image source here -->
         </div>
     
         <button id="dismissBtn" class="dismiss-button" onclick="dismiss()">dismiss</button>
@@ -101,7 +103,6 @@
             <p>processing your image...</p>
         </div>
     </div>
-    
     </div>
   <div class="user-input">
   <button id="galleryButton" for="fileInput">
@@ -128,15 +129,17 @@
   const API_KEY = "AIzaSyAXE8ZkUvf7jCYos4uygfjd26W6hRiU2qQ";
   const genAI = new GoogleGenerativeAI(API_KEY);
 
+  let previousImageUrl = '';
+
   window.handleImageSelection = function() {
-    // Hide the progressImage div and show the selectedImageLay div
     document.getElementById('progressImage').style.display = 'none';
     document.getElementById('selectedImageLay').style.display = 'flex';
     document.getElementById('dismissBtn').style.display = 'flex';
+    document.getElementById('selected2').style.display='none';
+    document.getElementById('questionContainer').style.display='none';
 
     document.getElementById('output').textContent = "";
 
-    // Display the selected image
     const fileInputEl = document.getElementById('fileInput');
     const selectedImageDiv = document.getElementById('selected');
     
@@ -144,8 +147,8 @@
       const selectedImage = fileInputEl.files[0];
       const imageUrl = URL.createObjectURL(selectedImage);
       selectedImageDiv.style.backgroundImage = `url('${imageUrl}')`;
+      previousImageUrl = imageUrl;
     } else {
-      // Handle the case when no image is selected
       selectedImageDiv.style.backgroundImage = 'none';
     }
   }
@@ -156,33 +159,47 @@
     document.getElementById('selectedImageLay').style.display = 'none';
   }
 
-  window.handleSendButton = function() {
-    const fileInputEl = document.getElementById('fileInput');
-    const promptText = document.getElementById('promptInput').value.trim();
-    if (promptText !== ""){
-      if (fileInputEl.files.length > 0) {
-        const dismissBtn = document.getElementById('dismissBtn');
-        dismissBtn.style.display = "none";
-        const progress = document.getElementById('progressImage');
-        progress.style.display = "flex";
-        run()
+window.handleSendButton = async function() {
+  const fileInputEl = document.getElementById('fileInput');
+  const promptText = document.getElementById('promptInput').value.trim();
 
-        fileInputEl.value = null;
+  if (promptText !== "") {
+    const questionContainer = document.getElementById('questionContainer');
+    const questionElement = document.getElementById('question');
+    const selectedImageContainer = document.getElementById('selectedImageContainer');
 
-        document.getElementById('promptInput').value = "";
-        document.getElementById('output').textContent = "";
+    questionContainer.style.display = 'block';
+    questionElement.style.display = 'block';
+    questionElement.textContent = `Question: ${promptText}`;
 
-      } else {
-        const progressRay = document.getElementById('progressRay');
-        progressRay.style.display = progressRay.style.display === 'none' ? 'flex' : 'none';
-        play();
-        document.getElementById('promptInput').value = "";
-        document.getElementById('output').textContent = "";
-      }
+    if (fileInputEl.files.length > 0) {
+      const dismissBtn = document.getElementById('dismissBtn');
+      dismissBtn.style.display = "none";
+
+      const progress = document.getElementById('progressImage');
+      progress.style.display = "flex";
+
+      run();
+
+      fileInputEl.value = null;
+      document.getElementById('promptInput').value = "";
+      document.getElementById('output').textContent = "";
     } else {
-      alert("Please enter a prompt to proceed!")
+      const progressRay = document.getElementById('progressRay');
+      progressRay.style.display = progressRay.style.display === 'none' ? 'flex' : 'none';
+      play();
+      document.getElementById('promptInput').value = "";
+      document.getElementById('output').textContent = "";
+
+      // Hide the selected image container if there is no image
+      selectedImageContainer.style.display = 'none';
     }
+  } else {
+    alert("Please enter a prompt to proceed!");
   }
+};
+
+
 
   window.play = async function () {
     const promptInput = document.getElementById('promptInput');
@@ -212,13 +229,25 @@
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
       console.log(chunkText);
-      text += chunkText;
-      document.getElementById('output').innerHTML = text;
+      text += processText(chunkText);
+      const outputContainer = document.getElementById('output');
+      outputContainer.innerHTML = text;
+      outputContainer.style.whiteSpace = 'pre-wrap';
     }
 
     const progressRay = document.getElementById('progressRay');
     progressRay.style.display = 'none';
   };
+
+  function processText(text) {
+  text = text.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+
+  text = text.replace(/^\s*\* (.+)$/gm, '<li>$1</li>');
+
+  text = '<ul>' + text + '</ul>';
+
+  return text;
+}
 
     window.run = async function () {
 
@@ -254,11 +283,19 @@
       const chunkText = chunk.text();
       console.log(chunkText);
       text += chunkText;
-      document.getElementById('output').textContent = text;
+      const outputContainer = document.getElementById('output');
+outputContainer.innerHTML = text;
+outputContainer.style.whiteSpace = 'pre-wrap';
     }
 
     const progressLay = document.getElementById('selectedImageLay');
     progressLay.style.display = 'none';
+    const selectedImageContainer = document.getElementById('selectedImageContainer');
+    const selected2 = document.getElementById('selected2');
+
+     selected2.style.backgroundImage = `url('${previousImageUrl}')`;
+      selectedImageContainer.style.display = 'flex';
+      document.getElementById('selected2').style.display='block';
   };
 
     async function fileToGenerativePart(file) {
@@ -281,7 +318,7 @@
             }, 4000);
             setTimeout(() => {
                 text.textContent = "YouTuber";
-            }, 8000); //1s = 1000 milliseconds
+            }, 8000);
         }
         textLoad();
         setInterval(textLoad, 12000);

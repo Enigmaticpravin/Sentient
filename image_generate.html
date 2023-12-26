@@ -169,16 +169,13 @@ const handleImageGeneration = (e) => {
   e.preventDefault();
   if(isImageGenerating) return;
 
-  // Get user input and image quantity values
   const userPrompt = e.srcElement[0].value;
   const userImgQuantity = parseInt(e.srcElement[1].value);
   
-  // Disable the generate button, update its text, and set the flag
   generateBtn.setAttribute("disabled", true);
   generateBtn.innerText = "Generating";
   isImageGenerating = true;
   
-  // Creating HTML markup for image cards with loading state
   const imgCardMarkup = Array.from({ length: userImgQuantity }, () => 
       `<div class="img-card loading">
         <img src="images/loader.svg" alt="AI generated image">
