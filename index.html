@@ -76,7 +76,10 @@
     </div>
     <div class="inputContainer">
       <div id="questionContainer" class="question-container" style="display: none;">
-        <p id="question" class="question"></p>
+        <div class="ques">
+          <img src="images/question-mark.png" class="quesicon">
+          <p id="question" class="question"></p>
+        </div>
         <div id="selectedImageContainer" class="selected-image-container" style="display: none;">
           <div id="selected2" class="rounded-image2"></div>
         </div>
@@ -170,7 +173,7 @@ window.handleSendButton = async function() {
 
     questionContainer.style.display = 'block';
     questionElement.style.display = 'block';
-    questionElement.textContent = `Question: ${promptText}`;
+    questionElement.innerHTML = `<span style="color: #FD5555;">Prompt: </span>${promptText}`;
 
     if (fileInputEl.files.length > 0) {
       const dismissBtn = document.getElementById('dismissBtn');
@@ -198,8 +201,6 @@ window.handleSendButton = async function() {
     alert("Please enter a prompt to proceed!");
   }
 };
-
-
 
   window.play = async function () {
     const promptInput = document.getElementById('promptInput');
