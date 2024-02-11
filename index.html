@@ -129,7 +129,7 @@
   <script type="module">
    import { GoogleGenerativeAI, HarmBlockThreshold, HarmCategory } from "@google/generative-ai";
 
-  const API_KEY = "AIzaSyAXE8ZkUvf7jCYos4uygfjd26W6hRiU2qQ";
+  const API_KEY = "AIzaSyAf9KqfhtJZdXJy8Y5mWf-R8_-0boAs3Zg";
   const genAI = new GoogleGenerativeAI(API_KEY);
 
   let previousImageUrl = '';
@@ -155,6 +155,24 @@
       selectedImageDiv.style.backgroundImage = 'none';
     }
   }
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const promptInput = document.getElementById('promptInput');
+    
+    promptInput.addEventListener('input', function (event) {
+        if (event.key === 'Enter' && !event.shiftKey) {
+            event.preventDefault();
+            handleSendButton();
+        }
+    });
+    
+    promptInput.addEventListener('keydown', function (event) {
+        if (event.key === 'Enter' && event.shiftKey) {
+            event.preventDefault();
+            promptInput.value += '\n';
+        }
+    });
+});
 
   window.dismiss = function(){
     const fileInputEl = document.getElementById('fileInput');
@@ -226,11 +244,14 @@ window.handleSendButton = async function() {
 
     const result = await model.generateContentStream(prompt);
 
+    let textContainer = document.createElement('div');
+
     let text = '';
     for await (const chunk of result.stream) {
       const chunkText = chunk.text();
       console.log(chunkText);
       text += processText(chunkText);
+
       const outputContainer = document.getElementById('output');
       outputContainer.innerHTML = text;
       outputContainer.style.whiteSpace = 'pre-wrap';
